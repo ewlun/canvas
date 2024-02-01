@@ -1,0 +1,54 @@
+
+class Canvas {
+    image() {
+        return new ImageObj();
+    }
+    drawImage() {
+
+    }
+    createLayer(str) {
+        return new Layer();
+    }
+}
+
+class ImageObj extends Canvas {
+    *move() {
+        super.drawImage()
+        if (true) yield
+        else return;
+    }
+}
+
+class Layer extends Canvas {
+    addToQueue(callback) {
+
+    }
+    async animate() {
+
+    }
+}
+
+// *********** script.ts ************
+
+const canvas = new Canvas(600, 400);
+
+let bg = canvas.createLayer("bg");
+let fg = canvas.createLayer("fg");
+
+bg.fillColor("green");
+
+canvas.onload = () => {
+    let card = canvas.image();
+    let card2 = canvas.image();
+    fg.addToQueue(() => {
+        card.move();
+        card2.move();
+    })
+    fg.addToQueue(() => {
+        card.move();
+        card2.move();
+    })
+
+    fg.animate();
+}
+
